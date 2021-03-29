@@ -1,0 +1,36 @@
+body{
+    font-family: 'Crimson Text', serif;
+    background-image: url(../assets/home1.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.table-user{
+    width: 100%;
+}
+td{
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    
+}
+input{
+    max-width: 10cm;
+}
+#welcomepage{
+    text-align: center;
+    height: 80vh;
+}
+#userwelcome{
+    background-color: #fff9ab;
+}
+#cwelcome{
+    background-color: #ffe0fd;
+}
+#swelcome{
+    background-color: #e0fffc;
+}
+#footer{
+    height: 20vh;
+    background-color: black;
+    color: white;
+}
