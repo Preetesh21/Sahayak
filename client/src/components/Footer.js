@@ -4,11 +4,13 @@ class Footer extends React.Component{
         return(
             <Fragment>
                 <div id="footer" >
+               
+                <div class="container">
                 <div class="row">
-                    <div class="col-sm-7 mt-3">
+                    <div class="col-7">
                         <p>“What mental health needs is more sunlight, more candor, and more unashamed conversation.” – Glenn Close.</p>
                     </div>
-                    <div class="col-sm-5 mt-3">
+                    <div class="col-5">
                         <a href="#" class="fa fa-facebook m-3"></a>
                         <a href="#" class="fa fa-twitter m-3"></a>
                         <a href="#" class="fa fa-youtube m-3"></a>
@@ -19,9 +21,10 @@ class Footer extends React.Component{
                 <div>
                 <form>
                     Subscribe to the weekly newsletter
-                    <input type="email" class="m-3"></input>
+                    <input type="email"></input>
                     <button type="submit" class="btn btn-light m-3">Subscribe</button>
                 </form>
+                </div>
                 </div>
                 </div>
             </Fragment>
