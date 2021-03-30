@@ -20,7 +20,7 @@ class Navbar extends Component{
     render() {
         return (
             <BrowserRouter>
-                <div>
+                <div className="App">
                     <Switch>
                         {/* User */}
                         <Route exact path="/users/:userid" render={(props) => <UserDashboard {...props}/>}/>
