@@ -12,9 +12,14 @@ class SpeakerLoginForm extends React.Component{
         const email = data.get('emailsl'); 
         const passwd = data.get('passwdsl');
         console.log(email,passwd);
-        const resp = await fetch(`http://localhost:5000/mender/speakers/${email}`);
+        const resp = await fetch(`http://localhost:5000/mender/speakers/${email}&${passwd}`);
         const jsonPasswd = await resp.json();
-        if(jsonPasswd['password'] === passwd){
+        // if(jsonPasswd['password'] === passwd){
+        //     console.log("password verified");
+        //     const speakerid = jsonPasswd['speakerid'];
+        //     window.location = `/speakers/${speakerid}`;
+        // }
+        if(jsonPasswd){
             console.log("password verified");
             const speakerid = jsonPasswd['speakerid'];
             window.location = `/speakers/${speakerid}`;

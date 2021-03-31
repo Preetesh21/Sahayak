@@ -1,4 +1,5 @@
 import React,{Fragment} from "react";
+import Footer from "./Footer";
 class SpeakerDashboard extends React.Component{
     constructor(props){
         super(props);
@@ -49,6 +50,7 @@ class SpeakerDashboard extends React.Component{
                     {this.state.Talks}
                 </div>
                 </div>
+                <Footer />
             </Fragment>
         );
     }

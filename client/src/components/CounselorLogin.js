@@ -12,9 +12,14 @@ class CounselorLoginForm extends React.Component{
         const email = data.get('emailcl'); 
         const passwd = data.get('passwdcl');
         console.log(email,passwd);
-        const resp = await fetch(`http://localhost:5000/mender/counselors/${email}`);
+        const resp = await fetch(`http://localhost:5000/mender/counselors/${email}&${passwd}`);
         const jsonPasswd = await resp.json();
-        if(jsonPasswd['password'] === passwd){
+        // if(jsonPasswd['password'] === passwd){
+        //     console.log("password verified");
+        //     const counselorid = jsonPasswd['counselorid'];
+        //     window.location = `/counselors/${counselorid}`;
+        // }
+        if(jsonPasswd){
             console.log("password verified");
             const counselorid = jsonPasswd['counselorid'];
             window.location = `/counselors/${counselorid}`;

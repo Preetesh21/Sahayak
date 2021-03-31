@@ -2,6 +2,7 @@ const express = require("express");
 const pool = require("./db");
 const app = express();
 const cors = require("cors");
+var bcrypt = require('bcryptjs');
 
 app.use(cors());
 app.use(express.json());
@@ -10,16 +11,32 @@ app.use(express.json());
 // New User Signup
 app.post('/mender/users',async (req,res)=>{
     const data = req.body;
-    const putUser = await pool.query("insert into menderschema.users(email, username,password,age, gender, creditCardNumber, phoneNumber, whatsappNumber, sessionsTaken,talksAttended) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",[data["emailus"],data["usernameus"],data["passwdus"],data["ageus"],data["genderus"],data["creditus"],data["phoneus"],data["phonewtspus"],0,0]);
-    res.json(putUser.rows[0]);
+    bcrypt.genSalt(10, async function(err, salt) {
+        bcrypt.hash(data["passwdus"], salt,async  function(err, hash) {
+            // Store hash in your password DB.
+            console.log(hash)
+            const putUser = await pool.query("insert into menderschema.users(email, username,password,age, gender, creditCardNumber, phoneNumber, whatsappNumber, sessionsTaken,talksAttended) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",[data["emailus"],data["usernameus"],hash,data["ageus"],data["genderus"],data["creditus"],data["phoneus"],data["phonewtspus"],0,0]);
+            res.json(putUser.rows[0]);
+        });
+    });
 });
 
 // Existing User Login
-app.get('/mender/users/:email',async(req,res)=>{
-    const { email } = req.params;
+app.get('/mender/users/:email&:password',async(req,res)=>{
+    const { email,password } = req.params;
     const getPasswd = await pool.query("select password,userID from menderschema.users where email=$1",[email]);
     console.log(getPasswd.rows[0]);
-    res.send(getPasswd.rows[0]);
+    bcrypt.compare(password, getPasswd.rows[0].password, function(err, res2) {
+        console.log(res2)
+        if(res2===true)
+        {
+            res.send(getPasswd.rows[0]);
+        }
+        else{
+            res.send(null)
+        }
+    });
+    
 });
 
 // Getting a User's all appointments
@@ -39,31 +56,64 @@ app.get('/mender/gettalks/:userid',async(req,res)=>{
 // New Counselor Signup
 app.post('/mender/counselors',async (req,res)=>{
     const data = req.body;
-    const putUser = await pool.query("insert into menderschema.counselors(name,email, username,password,age, gender, bankAccountNumber,IFSCcode,priority1,priority2,priority3,priority4, phoneNumber, whatsappNumber,fee,sessionsTaken,bDegree,mDegree,extraCourses,practicalExperience,portfolio,sessionRatings) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22)",[data["namecs"],data["emailcs"],data["usernamecs"],data["passwdcs"],data["agecs"],data["gendercs"],data["bankcs"],data["ifsccs"],data["pr1cs"],data["pr2cs"],data["pr3cs"],data["pr4cs"],data["phonecs"],data["phonewtspcs"],data["feecs"],0,data["bdegreecs"],data["mdegreecs"],data["coursecs"],data["yoecs"],data["portfoliocs"],0]);
-    res.json(putUser.rows[0]);
+    bcrypt.genSalt(10, async function(err, salt) {
+        bcrypt.hash(data["passwdcs"], salt,async  function(err, hash) {
+            // Store hash in your password DB.
+            console.log(hash ,'hello')
+            const putUser = await pool.query("insert into menderschema.counselors(name,email, username,password,age, gender, bankAccountNumber,IFSCcode,priority1,priority2,priority3,priority4, phoneNumber, whatsappNumber,fee,sessionsTaken,bDegree,mDegree,extraCourses,practicalExperience,portfolio,sessionRatings) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22)",[data["namecs"],data["emailcs"],data["usernamecs"],hash,data["agecs"],data["gendercs"],data["bankcs"],data["ifsccs"],data["pr1cs"],data["pr2cs"],data["pr3cs"],data["pr4cs"],data["phonecs"],data["phonewtspcs"],data["feecs"],0,data["bdegreecs"],data["mdegreecs"],data["coursecs"],data["yoecs"],data["portfoliocs"],0]);
+            res.json(putUser.rows[0]);
+        });
+    });
+
+    
 });
 
 // Existing Counselor Login
-app.get('/mender/counselors/:email',async(req,res)=>{
-    const { email } = req.params;
+app.get('/mender/counselors/:email&:password',async(req,res)=>{
+    const { email,password } = req.params;
     const getPasswd = await pool.query("select counselorID,password from menderschema.counselors where email=$1",[email]);
     console.log(getPasswd.rows[0]);
-    res.send(getPasswd.rows[0]);
+    bcrypt.compare(password, getPasswd.rows[0].password, function(err, res2) {
+        console.log(res2)
+        if(res2===true)
+        {
+            res.send(getPasswd.rows[0]);
+        }
+        else{
+            res.send(null)
+        }
+    });
 });
 
 // New Speaker Signup
 app.post('/mender/speakers',async (req,res)=>{
     const data = req.body;
-    const putUser = await pool.query("insert into menderschema.speakers(name,email, username,password,age, gender, bankAccountNumber,IFSCcode,phoneNumber,sessionsTaken,practicalExperience,portfolio,talksRatings) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)",[data["namess"],data["emailss"],data["usernamess"],data["passwdss"],data["agess"],data["genderss"],data["bankss"],data["ifscss"],data["phoness"],0,data["yoess"],data["portfolioss"],0]);
+    bcrypt.genSalt(10, async function(err, salt) {
+        bcrypt.hash(data["passwdss"], salt,async  function(err, hash) {
+            // Store hash in your password DB.
+            console.log(hash)
+            const putUser = await pool.query("insert into menderschema.speakers(name,email, username,password,age, gender, bankAccountNumber,IFSCcode,phoneNumber,sessionsTaken,practicalExperience,portfolio,talksRatings) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)",[data["namess"],data["emailss"],data["usernamess"],hash,data["agess"],data["genderss"],data["bankss"],data["ifscss"],data["phoness"],0,data["yoess"],data["portfolioss"],0]);
     res.json(putUser.rows[0]);
+        });
+    });
+
 });
 
 // Existing Speaker Login
-app.get('/mender/speakers/:email',async(req,res)=>{
-    const { email } = req.params;
+app.get('/mender/speakers/:email&:password',async(req,res)=>{
+    const { email,password } = req.params;
     const getPasswd = await pool.query("select password,speakerID from menderschema.speakers where email=$1",[email]);
     console.log(getPasswd.rows[0]);
-    res.send(getPasswd.rows[0]);
+    bcrypt.compare(password, getPasswd.rows[0].password, function(err, res2) {
+        console.log(res2)
+        if(res2===true)
+        {
+            res.send(getPasswd.rows[0]);
+        }
+        else{
+            res.send(null)
+        }
+    });
 });
 
 // Get data of speaker

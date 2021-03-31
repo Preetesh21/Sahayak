@@ -1,4 +1,5 @@
 import React,{Fragment} from "react";
+import Footer from "./Footer";
 class CounselorDashboard extends React.Component{
     constructor(props){
         super(props);
@@ -7,6 +8,7 @@ class CounselorDashboard extends React.Component{
         return(
             <Fragment>
         
+        <Footer />
             </Fragment>
         );
     }
