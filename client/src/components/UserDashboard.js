@@ -1,11 +1,18 @@
 import React,{Fragment} from "react";
+import Auth from './Auth';
 import Footer from "./Footer";
+import {Redirect} from 'react-router-dom';
 class UserDashboard extends React.Component{
     constructor(props){
         super(props);
         this.userid = this.props.match.params.userid;
         console.log(this.userid);
         this.state = {Appoints:'',Talks:''};
+        if(localStorage.getItem("user")!=='t')
+            {
+                console.log("Help")
+                window.location = "/";
+            }
     }
     bookAnAppointment = () =>{
         window.location = `/users/${this.userid}/book-an-appointment`;
@@ -17,13 +24,24 @@ class UserDashboard extends React.Component{
         window.location = `/users/${this.userid}/talks`;
     }
     logMeOut=()=>{
+        Auth.setuser('');
+        Auth.setID('');
+        localStorage.setItem("user", "");
+        localStorage.setItem("id", "");
         window.location = "/";
     }
     componentDidMount(){
         this.fetchData();
     }
+    
     fetchData = async () =>{
         try {
+           // console.log(localStorage.getItem("id"),'hello',this.userid);
+            if(this.userid!==localStorage.getItem("id"))
+            {
+                console.log("Help")
+                window.location = `/users/${localStorage.getItem("id")}`;
+            }
             console.log("fref");
             const in1 = await fetch(`http://localhost:5000/mender/getappo/${this.userid}`);
             const appo = await in1.json();

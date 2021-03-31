@@ -1,4 +1,5 @@
 import  React,{Fragment} from "react";
+import Auth from './Auth';
 import Footer from "./Footer";
 class SpeakerLoginForm extends React.Component{
     constructor() {
@@ -22,6 +23,10 @@ class SpeakerLoginForm extends React.Component{
         if(jsonPasswd){
             console.log("password verified");
             const speakerid = jsonPasswd['speakerid'];
+            Auth.setspeaker('t');
+            Auth.setID(speakerid);
+            localStorage.setItem("speaker", "t");
+            localStorage.setItem("id", speakerid);
             window.location = `/speakers/${speakerid}`;
         }
         else{

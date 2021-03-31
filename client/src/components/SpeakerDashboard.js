@@ -1,5 +1,6 @@
 import React,{Fragment} from "react";
 import Footer from "./Footer";
+import Auth from "./Auth";
 class SpeakerDashboard extends React.Component{
     constructor(props){
         super(props);
@@ -8,11 +9,22 @@ class SpeakerDashboard extends React.Component{
             Info : '',
             Talks : ''
         }
+        if(localStorage.getItem("speaker")!=='t')
+            {
+                console.log("Help")
+                window.location = "/";
+            }
     }
     componentDidMount(){
         this.dispInfo();
     }
     dispInfo = async () => {
+
+        if(this.speakerid!==localStorage.getItem("id"))
+            {
+                console.log("Help")
+                window.location = `/speakers/${localStorage.getItem("id")}`;
+            }
         const res1 = await fetch(`http://localhost:5000/mender/speakersdash/${this.speakerid}`);
         const info1 = await res1.json();
         const res2 = await fetch(`http://localhost:5000/mender/alltalks/${this.speakerid}`);
@@ -35,6 +47,13 @@ class SpeakerDashboard extends React.Component{
             </ul>)
         });
     }
+    logMeOut=()=>{
+        Auth.setspeaker('');
+        Auth.setID('');
+        localStorage.setItem("speaker", "");
+        localStorage.setItem("id", "");
+        window.location = "/";
+    }
     newTalk = () =>{
         window.location = `/speakers/${this.speakerid}/pushnewtalk`;
     }
@@ -47,6 +66,7 @@ class SpeakerDashboard extends React.Component{
                 </div>
                 <div className="col-md-7"  id="talks" >
                     <button className="btn btn-primary" onClick={this.newTalk}>New Talk</button>
+                    <button onClick={this.logMeOut} className="btn btn-danger m-3">Log me out</button>
                     {this.state.Talks}
                 </div>
                 </div>
