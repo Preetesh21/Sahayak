@@ -19,12 +19,12 @@ class SpeakerDashboard extends React.Component{
         this.setState({
             Talks: info2.map((talk) => (
                 <li key={talk.talkid}>
-                    <div class="card w-50">
-                        <div class="card-body">
-                            <h5 class="card-title">{talk.talktitle}</h5>
-                            <p class="card-text">{talk.talkdesc}</p>
-                            <p class="card-text">{talk.talktime}</p>
-                            <p class="card-text">{talk.talkdate}</p>
+                    <div className="card w-50">
+                        <div className="card-body">
+                            <h5 className="card-title">{talk.talktitle}</h5>
+                            <p className="card-text">{talk.talkdesc}</p>
+                            <p className="card-text">{talk.talktime}</p>
+                            <p className="card-text">{talk.talkdate}</p>
                         </div>
                     </div>
                 </li>
@@ -40,12 +40,12 @@ class SpeakerDashboard extends React.Component{
     render(){
         return(
             <Fragment>
-                <div class="row">
-                <div class="col-md-5" id="profile">
+                <div className="row">
+                <div className="col-md-5" id="profile">
                     {this.state.Info}
                 </div>
-                <div class="col-md-7"  id="talks" >
-                    <button class="btn btn-primary" onClick={this.newTalk}>New Talk</button>
+                <div className="col-md-7"  id="talks" >
+                    <button className="btn btn-primary" onClick={this.newTalk}>New Talk</button>
                     {this.state.Talks}
                 </div>
                 </div>

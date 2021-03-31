@@ -1,4 +1,4 @@
-import {Fragment, useState} from "react";
+import {Fragment} from "react";
 import React from "react";
 import Footer from "./Footer";
 import "./style.css";
@@ -11,7 +11,7 @@ class UserSignUpForm extends React.Component {
         try{
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(data); // reference by form input's `name` tag
+        //console.log(data); // reference by form input's `name` tag
         var object = {};
         data.forEach(function(value, key){
             object[key] = value;
@@ -32,50 +32,54 @@ class UserSignUpForm extends React.Component {
     
     render(){return (
         <Fragment >
-                    <form style={{marginLeft:"50vw",marginBottom:"2vh",marginTop:"2vh"}} onSubmit={this.handleSubmit}>
-                        <div class="form-group">
+        <div className="container">
+                    <form className="form-area" style={{float:"right",width:"50vw"}} onSubmit={this.handleSubmit}>
+                        <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" name="emailus" aria-describedby="emailHelp" placeholder="Enter email"/>
+                            <input type="email" className="form-control " name="emailus" aria-describedby="emailHelp" placeholder="Enter email"/>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Username</label>
-                            <input type="text" class="form-control" name="usernameus" placeholder="Username"/>
+                            <input type="text" className="form-control " name="usernameus" placeholder="Username"/>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Age</label>
-                            <input type="number" class="form-control" name="ageus" placeholder="Age in years"/>
+                            <input type="number" className="form-control " name="ageus" placeholder="Age in years"/>
                         </div>
-                        <div>
-                            <label>Gender</label><br/>
-                            <input type="radio"  name="genderus" value="male"/>
-                            <label for="male">Male</label><br/>
-                            <input type="radio"  name="genderus" value="female"/>
-                            <label for="female">Female</label><br/>
-                            <input type="radio"  name="genderus" value="transgender"/>
-                            <label for="other">Transgender</label><br/>
-                            <input type="radio"  name="genderus" value="other"/>
-                            <label for="other">Prefer not to say</label><br/>
+                        <div className="form-group">
+                            <label >Gender</label><br/>
+                            <input className="form-check-input m-1" type="radio"  name="genderus" value="male"/>
+                            <label className="form-check-label ml-4" for="male">Male</label><br/>
+                            <input className="form-check-input m-1" type="radio"  name="genderus" value="female"/>
+                            <label className="form-check-label ml-4" for="female">Female</label><br/>
+                            <input className="form-check-input m-1" type="radio"  name="genderus" value="transgender"/>
+                            <label className="form-check-label ml-4" for="other">Transgender</label><br/>
+                            <input className="form-check-input m-1" type="radio"  name="genderus" value="other"/>
+                            <label className="form-check-label ml-4" for="other">Prefer not to say</label><br/>
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Credit Card Number</label>
-                            <input type="text" class="form-control" name="creditus" placeholder="XXXXXXXXXXXX"/>
+                            <input type="text" className="form-control " name="creditus" placeholder="XXXXXXXXXXXX"/>
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Phone Number</label>
-                            <input type="text" class="form-control" name="phoneus" placeholder="XXXXXXXXXX"/>
+                            <input type="text" className="form-control " name="phoneus" placeholder="XXXXXXXXXX"/>
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Whatsapp Number</label>
-                            <input type="text" class="form-control" name="phonewtspus" placeholder="XXXXXXXXXX"/>
+                            <input type="text" className="form-control " name="phonewtspus" placeholder="XXXXXXXXXX"/>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" name="passwdus" placeholder="Password"/>
+                            <input type="password" className="form-control " name="passwdus" placeholder="Password"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign me up</button>
+                        <button type="submit" className="btn btn-primary ">Sign up</button>
+                    
                     </form>
+                    </div>
                     <Footer/>
+
         </Fragment>
     );
     }

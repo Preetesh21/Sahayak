@@ -1,5 +1,5 @@
 import React,{Fragment} from "react";
-
+import Footer from "./Footer";
 class AllTestsPage extends React.Component{
     constructor(props){
         super(props);
@@ -49,11 +49,10 @@ class AllTestsPage extends React.Component{
     render(){
         return(
             <Fragment>
-                <div style={{textAlign:"center"}} id="objtest">
-                <p >Answer all of these honestly...</p>
+                <div style={{textAlign:"center",minHeight:"75vh"}} id="objtest">
                 <form onSubmit={this.submitObjectiveRes}>
-                    {/* depression */}
-                    <div class="form-control">
+                
+                    <div className="form-control"><h6>Answer them honestly</h6>
                         <label>How often have you been bothered by feeling down, depressed or hopeless?</label><br/>
                         <input type="radio"  name="q1" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -64,7 +63,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q1" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you had little interest or pleasure in doing things?</label><br/>
                         <input type="radio"  name="q2" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -75,7 +74,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q2" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by trouble falling or staying asleep, or sleeping too much?</label><br/>
                         <input type="radio"  name="q3" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -86,7 +85,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q3" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by feeling tired or having little energy?</label><br/>
                         <input type="radio"  name="q4" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -97,7 +96,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q4" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by poor appetite or overeating?</label><br/>
                         <input type="radio"  name="q5" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -108,7 +107,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q5" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by feeling bad about yourself, or that you are a failure, or have let yourself or your family down?</label><br/>
                         <input type="radio"  name="q6" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -119,7 +118,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q6" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by trouble concentrating on things, such as reading the newspaper or watching television?</label><br/>
                         <input type="radio"  name="q7" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -130,7 +129,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q7" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by moving or speaking so slowly that other people could have noticed, or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?</label><br/>
                         <input type="radio"  name="q8" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -141,7 +140,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q8" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>Have you had an anxiety attack (suddenly feeling fear or panic)?</label><br/>
                         <input type="radio"  name="q9" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -153,7 +152,7 @@ class AllTestsPage extends React.Component{
                         <label for="D">Always</label><br/>
                     </div>
                     {/* anxiety */}
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by feeling nervous, anxious or on edge?</label><br/>
                         <input type="radio"  name="q10" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -164,7 +163,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q10" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by not being able to stop or control worrying?</label><br/>
                         <input type="radio"  name="q11" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -175,7 +174,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q11" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by worrying too much about different things?</label><br/>
                         <input type="radio"  name="q12" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -186,7 +185,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q12" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by having trouble relaxing?</label><br/>
                         <input type="radio"  name="q13" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -197,7 +196,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q13" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by being so restless that it is hard to sit still?</label><br/>
                         <input type="radio"  name="q14" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -208,7 +207,7 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q14" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <div class="form-control">
+                    <div className="form-control">
                         <label>How often have you been bothered by becoming easily annoyed or irritable?</label><br/>
                         <input type="radio"  name="q15" value="A"/>
                         <label for="A">Not at all</label><br/>
@@ -219,11 +218,14 @@ class AllTestsPage extends React.Component{
                         <input type="radio"  name="q15" value="D"/>
                         <label for="D">Always</label><br/>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div className="form-control">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
                 </form>
                 </div>
                 <div style={{textAlign:"center"}} id="objtestres"></div>
                 <div style={{textAlign:"center"}} id="optionalbook"></div>
+                <Footer/>
             </Fragment>
         );
     }

@@ -23,7 +23,7 @@ class AppointmentBooking extends React.Component{
         this.setState({bs:slots});
         this.setState({
             BusySlots: slots.map((slot,index) => (
-                <li key={index} class="list-group-item">
+                <li key={index} className="list-group-item">
                     Date : {(slot.bookdate).toString().substr(0,10)}<br/>
                     Time : {slot.booktime}
                 </li>
@@ -50,15 +50,15 @@ class AppointmentBooking extends React.Component{
             if(parseInt(yyyy) < parseInt(data.get("date").substr(0,4))){
                 console.log("valid");
             }
-            else if(parseInt(yyyy) == parseInt(data.get("date").substr(0,4))){
+            else if(parseInt(yyyy) === parseInt(data.get("date").substr(0,4))){
                 if(parseInt(mm) < parseInt(data.get("date").substr(5,7))){
                     console.log("valid");
                 }
-                else if(parseInt(mm) == parseInt(data.get("date").substr(5,7))){
+                else if(parseInt(mm) === parseInt(data.get("date").substr(5,7))){
                     if(parseInt(dd) < parseInt(data.get("date").substr(8,10))){
                         console.log("valid");
                     }
-                    else if(parseInt(dd) == parseInt(data.get("date").substr(8,10))){
+                    else if(parseInt(dd) === parseInt(data.get("date").substr(8,10))){
                         // time 
                         var hour = today.getHours();
                         var h1 = data.get("time").substr(0,2);
@@ -93,7 +93,7 @@ class AppointmentBooking extends React.Component{
                 console.log("invalid");
             }
             // displaying error if exists
-            if(flag==0){
+            if(flag===0){
                 document.getElementById("warndatetime").innerHTML = "<p style=\"color:red;\">Please Insert Valid Data.</p>"
             }
 
@@ -102,10 +102,10 @@ class AppointmentBooking extends React.Component{
                 bs.forEach(function(item){
                     let date = item["bookdate"].toString();
                     let time = item["booktime"].toString();
-                    if(parseInt(date.substr(0,4)) == parseInt(data.get("date").substr(0,4))){
-                        if(parseInt(date.substr(5,7)) == parseInt(data.get("date").substr(5,7))){
-                            if(parseInt(date.substr(8,10)) == parseInt(data.get("date").substr(8,10))){
-                                if(parseInt(data.get("time").substr(0,2)) == parseInt(time.substr(0,2))){
+                    if(parseInt(date.substr(0,4)) === parseInt(data.get("date").substr(0,4))){
+                        if(parseInt(date.substr(5,7)) === parseInt(data.get("date").substr(5,7))){
+                            if(parseInt(date.substr(8,10)) === parseInt(data.get("date").substr(8,10))){
+                                if(parseInt(data.get("time").substr(0,2)) === parseInt(time.substr(0,2))){
                                     document.getElementById("warndatetime").innerHTML = "<p style=\"color:red;\">This is a busy slot. Please Insert a FREE Slot.</p>"
                                     flag = 0;
                                 }
@@ -113,7 +113,7 @@ class AppointmentBooking extends React.Component{
                         }
                     }
                 });
-                if(flag == 1){
+                if(flag === 1){
                     console.log("the slot is ready to be inserted ");
                     const ress = await fetch(`http://localhost:5000/mender/${this.userid}/bookappointment/${this.counselorid}`,{
                         method:'POST',
@@ -135,18 +135,18 @@ class AppointmentBooking extends React.Component{
                     <form  style={{height:"75vh",marginLeft:"50vw",marginBottom:"2vh",marginTop:"2vh"}} onSubmit={this.bookMe}>
                         Date<br/>
                         <input name="date" type="date"></input><br/>
-                        Time Slot <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Time Slots Info" data-content="Each time slot is 40 minutes long followed by 20 minutes break for the Psychologist. For example : 1:00 - 1:40 is the appointment slot and 1:40 - 2:00 is a break slot. The Counselors are available from 10:00 am to 5 pm.">?</button><br/>
+                        Time Slot <button type="button" className="btn btn-lg btn-danger" data-toggle="popover" title="Time Slots Info" data-content="Each time slot is 40 minutes long followed by 20 minutes break for the Psychologist. For example : 1:00 - 1:40 is the appointment slot and 1:40 - 2:00 is a break slot. The Counselors are available from 10:00 am to 5 pm.">?</button><br/>
                         <input name="time" type="time"></input><br/>
                         Link<br/>
                         <input name="link" type="text"></input><br/>
-                        <button type="submit" class="btn btn-info">book Slot</button>
+                        <button type="submit" className="btn btn-info">book Slot</button>
                     </form>
                     <div id="warndatetime">
                     </div>
                 </div>
                 <div id="busyslots"  style={{height:"75vh",marginLeft:"50vw",marginBottom:"2vh",marginTop:"2vh"}} >
                     Busy slots
-                    <ul class="list-group">{this.state.BusySlots}</ul>
+                    <ul className="list-group">{this.state.BusySlots}</ul>
                 </div>
             </Fragment>
         );

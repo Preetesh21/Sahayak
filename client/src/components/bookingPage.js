@@ -1,5 +1,5 @@
 import React,{Fragment} from "react";
-import AppointmentBooking from "./AppointmentBooking";
+import Footer from "./Footer";
 class BookingPage extends React.Component{
     constructor(props){
         super(props);
@@ -17,11 +17,11 @@ class BookingPage extends React.Component{
         const specdict = {"A":"Cognitive-Behavioral Therapy (CBT)","B":"Behavioral Therapy","C":"Dialectical Behavior Therapy (DBT)","D":"Humanistic Therapy"};
         this.setState({
             Counselors: counselors.map((counselor) => (
-                <li class="list-group-item" key={counselor.counselorid}>
-                    <div class="card w-50">
-                        <div class="card-body">
-                            <h5 class="card-title">{counselor.name}</h5>
-                            <p class="card-text">Age : {counselor.age}, Ratings : {counselor.sessionratings}</p>
+                <li className="list-group-item" key={counselor.counselorid}>
+                    <div className="card w-50">
+                        <div className="card-body">
+                            <h5 className="card-title">{counselor.name}</h5>
+                            <p className="card-text">Age : {counselor.age}, Ratings : {counselor.sessionratings}</p>
                             <p>Speciality : {specdict[counselor.priority1]}, {specdict[counselor.priority2]}</p>
                             <button onClick={()=>{this.bookIt(this.props,counselor.counselorid)}}>Book Appointment</button>
                         </div>
@@ -39,18 +39,18 @@ class BookingPage extends React.Component{
         const pref = data.get("Preference");
         const temp = [];
         counselors.forEach(function(item){
-            if(specdict[item.priority1] == pref){
+            if(specdict[item.priority1] === pref){
                 temp.push(item);
             }
         });
 
         this.setState({
             Counselors: temp.map((counselor) => (
-                <li class="list-group-item" key={counselor.counselorid}>
-                    <div class="card w-50">
-                        <div class="card-body">
-                            <h5 class="card-title">{counselor.name}</h5>
-                            <p class="card-text">Age : {counselor.age}, Ratings : {counselor.sessionratings}</p>
+                <li className="list-group-item" key={counselor.counselorid}>
+                    <div className="card w-50">
+                        <div className="card-body">
+                            <h5 className="card-title">{counselor.name}</h5>
+                            <p className="card-text">Age : {counselor.age}, Ratings : {counselor.sessionratings}</p>
                             <p>Speciality : {specdict[counselor.priority1]}, {specdict[counselor.priority2]}</p>
                             <button onClick={()=>{this.bookIt(this.props,counselor.counselorid)}}>Book Appointment</button>
                         </div>
@@ -62,18 +62,21 @@ class BookingPage extends React.Component{
     render(){
     return(
         <Fragment>
-            <form class="m-3" onSubmit={this.sortDisplay}>
+        <div className="container text-center" style={{minHeight:"75vh"}}>
+            <form className="m-3" onSubmit={this.sortDisplay}>
                 <h3>Filter</h3>
                 <input name="Preference" id="Pref" list="prefs"/> 
-                <button class="btn btn-info m-2">Search</button>
+                <button className="btn btn-info m-2">Search</button>
             </form> 
             <datalist id="prefs"> 
             <option name="A">Cognitive-Behavioral Therapy (CBT)</option> <option name="B">Behavioral Therapy</option> <option name="C">Dialectical Behavior Therapy (DBT)</option> <option name="D">Humanistic Therapy</option>
             </datalist>
 
-            <ul class="list-group">
+            <ul className="list-group">
                 {this.state.Counselors}
             </ul>
+            </div>
+            <Footer />
         </Fragment>
     );}
 }

@@ -40,7 +40,7 @@ class UserBlogs extends React.Component{
 
         this.setState({
             Blogs: blogs.map((blog) => (
-                <li class="list-group-item" key={blog.blogid}>
+                <li className="list-group-item" key={blog.blogid}>
                     {blog.blogtitle}
                     <br/>
                     tags : {blog.tags}
@@ -63,7 +63,7 @@ class UserBlogs extends React.Component{
                     </form> */}
                 </div>
                 <div id="prevUserBlogs">
-                <ul class="list-group">
+                <ul className="list-group">
                     {this.state.Blogs}
                 </ul>
                 </div>

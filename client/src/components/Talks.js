@@ -1,4 +1,5 @@
 import  React,{Fragment} from "react";
+import Footer from "./Footer";
 class Talks extends React.Component{
     constructor(props){
         super(props);
@@ -18,7 +19,7 @@ class Talks extends React.Component{
         const talks1 = await resp1.json();
         var flag=true;
         for(var i=0;i<regtalks.length;i++){
-            if(regtalks[i].talkid == id){
+            if(regtalks[i].talkid === id){
                 console.log(regtalks[i].talkid);
                 flag=false;
                 document.getElementById(`id${regtalks[i].talkid}`).innerHTML = "Already Registered";
@@ -26,7 +27,7 @@ class Talks extends React.Component{
             }
         }
         for(var i =0;i<talks1.length;i++){
-            if(talks1[i].maxentries == talks1[i].bookedseats){
+            if(talks1[i].maxentries === talks1[i].bookedseats){
                 document.getElementById(`id${regtalks[i].talkid}`).innerHTML = "Seats Full";
                 flag=false;
             }
@@ -57,9 +58,12 @@ class Talks extends React.Component{
     render(){
         return(
             <Fragment>
-            <ul class="list-group">
+            <div className="container" style={{minHeight:"75vh"}}>
+            <ul className="list-group">
                 {this.state.Talks}
             </ul>
+            </div>
+            <Footer/>
             </Fragment>
         );
     }

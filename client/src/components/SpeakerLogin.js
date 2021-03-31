@@ -14,7 +14,7 @@ class SpeakerLoginForm extends React.Component{
         console.log(email,passwd);
         const resp = await fetch(`http://localhost:5000/mender/speakers/${email}`);
         const jsonPasswd = await resp.json();
-        if(jsonPasswd['password'] == passwd){
+        if(jsonPasswd['password'] === passwd){
             console.log("password verified");
             const speakerid = jsonPasswd['speakerid'];
             window.location = `/speakers/${speakerid}`;
@@ -29,17 +29,19 @@ class SpeakerLoginForm extends React.Component{
     };
     render(){return (
         <Fragment>
-                    <form  style={{height:"75vh",marginLeft:"50vw",marginBottom:"2vh",marginTop:"2vh"}} onSubmit={this.handleSubmit}>
-                        <div class="form-group">
+        <div className="container">
+                    <form  style={{height:"75vh",float:"right",width:"50vw"}} onSubmit={this.handleSubmit}>
+                        <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" name="emailsl" aria-describedby="emailHelp" placeholder="Enter email"/>
+                            <input type="email" className="form-control" name="emailsl" aria-describedby="emailHelp" placeholder="Enter email"/>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" name="passwdsl" placeholder="Password"/>
+                            <input type="password" className="form-control" name="passwdsl" placeholder="Password"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
+                    </div>
                     <Footer/>
                     </Fragment>
     );

@@ -5,24 +5,24 @@ class Footer extends React.Component{
             <Fragment>
                 <div id="footer" >
                
-                <div class="container">
-                <div class="row">
-                    <div class="col-7">
+                <div className="container">
+                <div className="row">
+                    <div className="col-7">
                         <p>“What mental health needs is more sunlight, more candor, and more unashamed conversation.” – Glenn Close.</p>
                     </div>
-                    <div class="col-5">
-                        <a href="#" class="fa fa-facebook m-3"></a>
-                        <a href="#" class="fa fa-twitter m-3"></a>
-                        <a href="#" class="fa fa-youtube m-3"></a>
-                        <a href="#" class="fa fa-instagram m-3"></a>
-                        <a href="#" class="fa fa-google m-3"></a>
+                    <div className="col-5">
+                        <a href="https://www.google.com/" className="fa fa-facebook m-3"></a>
+                        <a href="https://www.google.com/" className="fa fa-twitter m-3"></a>
+                        <a href="https://www.google.com/" className="fa fa-youtube m-3"></a>
+                        <a href="https://www.google.com/" className="fa fa-instagram m-3"></a>
+                        <a href="https://www.google.com/" className="fa fa-google m-3"></a>
                     </div>
                 </div>
                 <div>
                 <form>
                     Subscribe to the weekly newsletter
-                    <input type="email"></input>
-                    <button type="submit" class="btn btn-light m-3">Subscribe</button>
+                    <input className="form-control " style={{maxWidth:"10cm"}} type="email"></input>
+                    <button type="submit" className="btn btn-light m-1">Subscribe</button>
                 </form>
                 </div>
                 </div>

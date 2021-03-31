@@ -1,5 +1,5 @@
 import React,{Fragment} from "react";
-
+import Footer from "./Footer";
 class UserDashboard extends React.Component{
     constructor(props){
         super(props);
@@ -32,13 +32,13 @@ class UserDashboard extends React.Component{
 
             this.setState({
                 Appoints : appo.map((item)=>(
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                         Date : {item.bookdate}<br/>
                         time : {item.booktime}
                     </li>
                 )),
                 Talks : talks.map((item)=>(
-                    <li class="list-group-item">
+                    <li className="list-group-item">
                         Date : {item.talkdate}<br/>
                         time : {item.talktime}
                     </li>
@@ -51,23 +51,26 @@ class UserDashboard extends React.Component{
     render(){
         return(
             <Fragment>
-                <div class="profile">
+            <div className="container" style={{minHeight:"75vh"}}>
+                <div className="profile text-center">
                     userID : {this.props.match.params.userid}
-                    <button onClick={this.bookAnAppointment} class="btn btn-warning m-3">Book an appointment</button>
-                    <button onClick={this.displayTest} class="btn btn-warning m-3">Self Assessment</button>
-                    <button onClick={this.allTalks} class="btn btn-warning m-3">Talks</button>
-                    <button onClick={this.logMeOut} class="btn btn-danger m-3">Log me out</button>
+                    <button onClick={this.bookAnAppointment} className="btn btn-warning m-3">Book an appointment</button>
+                    <button onClick={this.displayTest} className="btn btn-warning m-3">Self Assessment</button>
+                    <button onClick={this.allTalks} className="btn btn-warning m-3">Talks</button>
+                    <button onClick={this.logMeOut} className="btn btn-danger m-3">Log me out</button>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        Your Appointments
-                        <ul class="list-group">{this.state.Appoints}</ul>
+                <div className="row text-center">
+                    <div className="col-sm-6">
+                        <h3>Your Appointments</h3>
+                        <ul className="list-group">{this.state.Appoints}</ul>
                     </div>
-                    <div class="col-sm-6">
-                        Your Talks
-                        <ul class="list-group">{this.state.Talks}</ul>
+                    <div className="col-sm-6">
+                        <h3>Your Talks</h3>
+                        <ul className="list-group">{this.state.Talks}</ul>
                     </div>
                 </div>
+                </div>
+                <Footer/>
             </Fragment>
         );
     }

@@ -15,14 +15,13 @@ body{
 .table-user{
     width: 100%;
 }
+
+
 td{
     width: 50%;
     padding-left: 40px;
     padding-right: 40px;
     
-}
-input{
-    max-width: 10cm;
 }
 #welcomepage{
     text-align: center;

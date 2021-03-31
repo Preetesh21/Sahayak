@@ -26,15 +26,15 @@ class NewTalk extends React.Component{
         if(parseInt(yyyy) < parseInt(data.get("date").substr(0,4))){
             console.log("valid");
         }
-        else if(parseInt(yyyy) == parseInt(data.get("date").substr(0,4))){
+        else if(parseInt(yyyy) === parseInt(data.get("date").substr(0,4))){
             if(parseInt(mm) < parseInt(data.get("date").substr(5,7))){
                 console.log("valid");
             }
-            else if(parseInt(mm) == parseInt(data.get("date").substr(5,7))){
+            else if(parseInt(mm) === parseInt(data.get("date").substr(5,7))){
                 if(parseInt(dd) < parseInt(data.get("date").substr(8,10))){
                     console.log("valid");
                 }
-                else if(parseInt(dd) == parseInt(data.get("date").substr(8,10))){
+                else if(parseInt(dd) === parseInt(data.get("date").substr(8,10))){
                     // time 
                     var hour = today.getHours();
                     var h1 = data.get("time").substr(0,2);
@@ -61,13 +61,13 @@ class NewTalk extends React.Component{
             flag=0;
         }
         var hour = today.getHours();
-        var h1 = data.get("time").substr(0,2);
-        if(parseInt(h1) < 10 || parseInt(h1) > 19){
+        var h11 = data.get("time").substr(0,2);
+        if(parseInt(h11) < 10 || parseInt(h11) > 19){
             flag=0;
             console.log("invalid");
         }
         // displaying error if exists
-        if(flag==0){
+        if(flag===0){
             document.getElementById("warndatetime").innerHTML = "<p style=\"color:red;\">Please Insert Valid Data.</p>"
         }
 
@@ -76,10 +76,10 @@ class NewTalk extends React.Component{
                 let date = item["talkdate"].toString();
                 let time = item["talktime"].toString();
                 console.log(date,time);
-                if(parseInt(date.substr(0,4)) == parseInt(data.get("date").substr(0,4))){
-                    if(parseInt(date.substr(5,7)) == parseInt(data.get("date").substr(5,7))){
-                        if(parseInt(date.substr(8,10)) == parseInt(data.get("date").substr(8,10))){
-                            if(parseInt(data.get("time").substr(0,2)) == parseInt(time.substr(0,2))){
+                if(parseInt(date.substr(0,4)) === parseInt(data.get("date").substr(0,4))){
+                    if(parseInt(date.substr(5,7)) === parseInt(data.get("date").substr(5,7))){
+                        if(parseInt(date.substr(8,10)) === parseInt(data.get("date").substr(8,10))){
+                            if(parseInt(data.get("time").substr(0,2)) === parseInt(time.substr(0,2))){
                                 document.getElementById("warndatetime").innerHTML = "<p style=\"color:red;\">This is a busy slot. Please Insert a FREE Slot.</p>"
                                 flag = 0;
                             }
@@ -87,7 +87,7 @@ class NewTalk extends React.Component{
                     }
                 }
             });
-            if(flag == 1){
+            if(flag === 1){
                 console.log("the slot is ready to be inserted ");
                 const resp = await fetch(`http://localhost:5000/mender/${this.speakerid}/pushnewtalk`,{
                     method:'POST',
