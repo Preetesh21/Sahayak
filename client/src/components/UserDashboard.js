@@ -11,7 +11,7 @@ class UserDashboard extends React.Component{
         if(localStorage.getItem("user")!=='t')
             {
                 console.log("Help")
-                window.location = "/";
+                window.location = "/unauthorized";
             }
     }
     bookAnAppointment = () =>{

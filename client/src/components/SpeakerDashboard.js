@@ -4,22 +4,27 @@ import Auth from "./Auth";
 class SpeakerDashboard extends React.Component{
     constructor(props){
         super(props);
+        if(localStorage.getItem("speaker")!=='t')
+            {
+                console.log("Help")
+                window.location = "/unauthorized";
+            }
         this.speakerid = this.props.match.params.speakerid;
         this.state = {
             Info : '',
             Talks : ''
         }
-        if(localStorage.getItem("speaker")!=='t')
-            {
-                console.log("Help")
-                window.location = "/";
-            }
+        
     }
     componentDidMount(){
         this.dispInfo();
     }
     dispInfo = async () => {
-
+        if(localStorage.getItem("speaker")!=='t')
+            {
+                console.log("Help")
+                window.location = "/unauthorized";
+            }
         if(this.speakerid!==localStorage.getItem("id"))
             {
                 console.log("Help")

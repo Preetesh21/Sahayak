@@ -12,7 +12,7 @@ class CounselorDashboard extends React.Component{
         if(localStorage.getItem("counselor")!=='t')
             {
                 console.log("Help")
-                window.location = "/";
+                window.location = "/unauthorized";
             }
     }
     logMeOut=()=>{

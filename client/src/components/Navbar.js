@@ -14,6 +14,7 @@ import BookingPage from "./bookingPage";
 import AppointmentBooking from "./AppointmentBooking";
 import AllTestsPage from "./AllTestsPage";
 import Talks from "./Talks";
+import Unauthorized from "./Unauthorized";
 import NewTalk from "./NewTalk";
 
 class Navbar extends Component{
@@ -40,6 +41,7 @@ class Navbar extends Component{
                         <Route exact path="/speaker-signup"><SpeakerSignUpForm/></Route>
                         <Route exact path="/speaker-login"><SpeakerLoginForm/></Route>
                         <Route exact path="/"><Home/></Route>
+                        <Route exact path='/unauthorized' component={Unauthorized} />
                     </Switch>
                 </div>
             </BrowserRouter>
