@@ -44,8 +44,8 @@ class Talks extends React.Component{
         this.setState({
             Talks: talks.map((talk) => (
                 <li class="list-group-item" key={talk.talkid}>
-                    <p>{talk.talktitle}</p>
-                    <p>{talk.talkdesc}</p>
+                    <p>Title:{talk.talktitle}</p>
+                    <p>Description: {talk.talkdesc}</p>
                     <p>Date : {talk.talkdate}    Time : {talk.talktime}</p>
                     <p>Maximum Entries Allowed :{talk.maxentries}</p>
                     <p>Booked Seats :{talk.bookedseats}</p>
@@ -59,7 +59,7 @@ class Talks extends React.Component{
         return(
             <Fragment>
             <div className="container" style={{minHeight:"75vh"}}>
-            <ul className="list-group">
+            <ul className="list-group m-2">
                 {this.state.Talks}
             </ul>
             </div>

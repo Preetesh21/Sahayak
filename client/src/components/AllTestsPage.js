@@ -26,14 +26,11 @@ class AllTestsPage extends React.Component{
 
     displayScore(f){
         var dict = {"A":0,"B":1,"C":2,"D":3};
-        console.log(f["q1"]);
-        console.log(dict[f["q1"]]);
         let depressionScore = dict[f["q1"]] + dict[f["q2"]] + dict[f["q3"]] + dict[f["q4"]] + dict[f["q5"]] + dict[f["q6"]] + dict[f["q7"]] + dict[f["q8"]] + dict[f["q9"]] ;
-        depressionScore = depressionScore/27;
+        depressionScore = depressionScore*1.0/parseFloat(27);
         depressionScore = depressionScore*100;
-
         let anxietyScore = dict[f["q10"]] + dict[f["q11"]] + dict[f["q12"]] + dict[f["q13"]] + dict[f["q14"]] + dict[f["q15"]]; 
-        anxietyScore = anxietyScore*100/18;
+        anxietyScore = anxietyScore*100.0/18;
         document.getElementById("objtest").innerHTML = "";
         document.getElementById("objtestres").innerHTML = `<h3>depression score =${depressionScore}</h3><br><h3>anxiety score = ${anxietyScore}</h3>`;
         if(anxietyScore > 60 || depressionScore > 50){
@@ -52,7 +49,7 @@ class AllTestsPage extends React.Component{
                 <div style={{textAlign:"center",minHeight:"75vh"}} id="objtest">
                 <form onSubmit={this.submitObjectiveRes}>
                 
-                    <div className="form-control"><h6>Answer them honestly</h6>
+                    <div className="form-control"><h3>Answer them honestly</h3>
                         <label>How often have you been bothered by feeling down, depressed or hopeless?</label><br/>
                         <input type="radio"  name="q1" value="A"/>
                         <label for="A">Not at all</label><br/>

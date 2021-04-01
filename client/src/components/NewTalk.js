@@ -1,4 +1,5 @@
 import React,{Fragment} from "react";
+import Footer from './Footer';
 class NewTalk extends React.Component{
     constructor(props){
         super(props);
@@ -101,24 +102,27 @@ class NewTalk extends React.Component{
     render(){
         return(
             <Fragment>
-                <form onSubmit={this.pushIt}>
+            <div className="container">
+                <form style={{minHeight:"75vh"}} onSubmit={this.pushIt}>
                     Talk Title:
-                    <br/><input name="title" type="text"></input><br/>
+                    <br/><input className="form-control" name="title" type="text"></input><br/>
                     Talk Description:
-                    <br/><input name="desc" type="text"></input><br/>
+                    <br/><input className="form-control" name="desc" type="text"></input><br/>
                     Date:
-                    <br/><input name="date" type="date"></input><br/>
+                    <br/><input className="form-control" name="date" type="date"></input><br/>
                     Time:
-                    <br/><input name="time" type="time"></input><br/>
+                    <br/><input className="form-control" name="time" type="time"></input><br/>
                     Maximum number of entries:
-                    <br/><input name="maxent" type="number"></input><br/>
+                    <br/><input className="form-control" name="maxent" type="number"></input><br/>
                     Fee:
-                    <br/><input name="fee" type="number"></input><br/>
+                    <br/><input className="form-control" name="fee" type="number"></input><br/>
                     Venue:
-                    <br/><input name="venue" type="text"></input><br/>
+                    <br/><input className="form-control" name="venue" type="text"></input><br/>
                     <div id="warndatetime"></div>
-                    <button type="submit">Submit</button>
+                    <button className="btn btn-primary" type="submit">Submit</button>
                 </form>
+                </div>
+                <Footer />
             </Fragment>
         );
     }
