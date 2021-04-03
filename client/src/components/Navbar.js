@@ -16,6 +16,9 @@ import AllTestsPage from "./AllTestsPage";
 import Talks from "./Talks";
 import Unauthorized from "./Unauthorized";
 import NewTalk from "./NewTalk";
+import Sentiment from './sentiment';
+import Posts from './posts';
+import Allposts from './allposts';
 
 class Navbar extends Component{
     render() {
@@ -29,6 +32,8 @@ class Navbar extends Component{
                         <Route exact path="/users/:userid/book-an-appointment" render={(props) => <BookingPage {...props}/>}/>
                         <Route exact path="/users/:userid/book-an-appointment/:counselorid" render={(props) => <AppointmentBooking {...props}/>}/>
                         <Route exact path="/users/:userid/talks" render={(props) => <Talks {...props}/>}/>
+                        <Route exact path="/users/:userid/posts" render={(props) => <Posts {...props}/>}/>
+                        <Route exact path="/users/:userid/allposts" render={(props) => <Allposts {...props}/>}/>
                         {/* Counselor */}
                         <Route exact path="/counselors/:counselorid" render={(props) => <CounselorDashboard {...props}/>}/>
                         <Route exact path="/speakers/:speakerid" render={(props) => <SpeakerDashboard {...props}/>}/>
@@ -42,6 +47,7 @@ class Navbar extends Component{
                         <Route exact path="/speaker-login"><SpeakerLoginForm/></Route>
                         <Route exact path="/"><Home/></Route>
                         <Route exact path='/unauthorized' component={Unauthorized} />
+                        
                     </Switch>
                 </div>
             </BrowserRouter>

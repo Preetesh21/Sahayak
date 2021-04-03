@@ -18,6 +18,9 @@ export class Navber extends Component {
     allTalks=()=>{
         window.location = `/users/${localStorage.getItem("id")}/talks`;
     }
+    post=()=>{
+        window.location=`/users/${localStorage.getItem("id")}/posts`
+    }
     newTalk = () =>{
         window.location = `/speakers/${this.speakerid}/pushnewtalk`;
     }
@@ -63,6 +66,9 @@ export class Navber extends Component {
                         <button onClick={this.allTalks} className="btn btn-outline-primary m-2 my-2 my-sm-0" type="submit">Talks</button>
                     </li>
                     <li className="nav-item">
+                        <button onClick={this.post} className="btn btn-outline-primary m-2 my-2 my-sm-0" type="submit">Senti</button>
+                    </li>
+                    <li className="nav-item">
                         <button onClick={this.logMeOut} className="btn btn-outline-danger m-2 my-2 my-sm-0" type="submit">Log Out</button>
                     </li>
                     </ul>:
@@ -82,12 +88,6 @@ export class Navber extends Component {
                 }
                 {(localStorage.getItem("counselor")==='t' )?
                     <ul className="navbar-nav">
-                    <li className="nav-item ">
-                        <button className="btn btn-outline-primary m-2 my-2 my-sm-0" type="submit">Search</button>
-                    </li>
-                    <li className="nav-item">
-                        <button className="btn btn-outline-primary m-2 my-2 my-sm-0" type="submit">Search</button>
-                    </li>
                     <li className="nav-item">
                         <button onClick={this.logMeOut} className="btn btn-outline-danger m-2 my-2 my-sm-0" type="submit">Log Out</button>
                     </li>

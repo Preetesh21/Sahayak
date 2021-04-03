@@ -17,7 +17,7 @@ class NewTalk extends React.Component{
         const strdata = JSON.stringify(object);
 
         // checking if valid
-        const res2 = await fetch(`http://localhost:5000/mender/alltalks/${this.speakerid}`);
+        const res2 = await fetch(`/mender/alltalks/${this.speakerid}`);
         const info2 = await res2.json();
         console.log(info2);
         var today = new Date();
@@ -91,7 +91,7 @@ class NewTalk extends React.Component{
             });
             if(flag === 1){
                 console.log("the slot is ready to be inserted ");
-                const resp = await fetch(`http://localhost:5000/mender/${this.speakerid}/pushnewtalk`,{
+                const resp = await fetch(`/mender/${this.speakerid}/pushnewtalk`,{
                     method:'POST',
                     headers:{"content-type" : "application/json"},
                     body:JSON.stringify(object)

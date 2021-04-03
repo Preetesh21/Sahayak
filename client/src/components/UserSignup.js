@@ -17,7 +17,7 @@ class UserSignUpForm extends React.Component {
             object[key] = value;
         });
         console.log(JSON.stringify(object));
-        const resp = await fetch('http://localhost:5000/mender/users',{
+        const resp = await fetch('/mender/users',{
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(object)

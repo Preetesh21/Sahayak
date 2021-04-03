@@ -17,7 +17,7 @@ class SpeakerSignUpForm extends React.Component {
             object[key] = value;
         });
         console.log(JSON.stringify(object));
-        const resp = await fetch('http://localhost:5000/mender/speakers',{
+        const resp = await fetch('/mender/speakers',{
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(object)

@@ -13,7 +13,7 @@ class CounselorLoginForm extends React.Component{
         const email = data.get('emailcl'); 
         const passwd = data.get('passwdcl');
         console.log(email,passwd);
-        const resp = await fetch(`http://localhost:5000/mender/counselors/${email}&${passwd}`);
+        const resp = await fetch(`/mender/counselors/${email}&${passwd}`);
         const jsonPasswd = await resp.json();
         // if(jsonPasswd['password'] === passwd){
         //     console.log("password verified");

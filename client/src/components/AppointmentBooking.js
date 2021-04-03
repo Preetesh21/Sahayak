@@ -18,7 +18,7 @@ class AppointmentBooking extends React.Component{
     }
     fetchBusySlots = async() =>{
         console.log("hurr");
-        const resp = await fetch(`http://localhost:5000/mender/${this.counselorid}/busyslots`);
+        const resp = await fetch(`/mender/${this.counselorid}/busyslots`);
         const slots = await resp.json();
         console.log(slots);
         this.setState({bs:slots});
@@ -116,7 +116,7 @@ class AppointmentBooking extends React.Component{
                 });
                 if(flag === 1){
                     console.log("the slot is ready to be inserted ");
-                    const ress = await fetch(`http://localhost:5000/mender/${this.userid}/bookappointment/${this.counselorid}`,{
+                    const ress = await fetch(`/mender/${this.userid}/bookappointment/${this.counselorid}`,{
                         method:'POST',
                         body:strdata,
                         headers:{"Content-Type": "application/json"}

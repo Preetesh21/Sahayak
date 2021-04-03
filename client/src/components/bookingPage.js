@@ -13,7 +13,7 @@ class BookingPage extends React.Component{
         window.location = `/users/${props.match.params.userid}/book-an-appointment/${counselorid}`;
     }
     fetchEntries = async () =>{
-        const resp = await fetch('http://localhost:5000/mender/allcounselors');
+        const resp = await fetch('/mender/allcounselors');
         const counselors = await resp.json();
         const specdict = {"A":"Cognitive-Behavioral Therapy (CBT)","B":"Behavioral Therapy","C":"Dialectical Behavior Therapy (DBT)","D":"Humanistic Therapy"};
         this.setState({
@@ -29,7 +29,7 @@ class BookingPage extends React.Component{
     }
     sortDisplay = async (e) =>{
         e.preventDefault();
-        const resp = await fetch('http://localhost:5000/mender/allcounselors');
+        const resp = await fetch('/mender/allcounselors');
         const counselors = await resp.json();
         const specdict = {"A":"Cognitive-Behavioral Therapy (CBT)","B":"Behavioral Therapy","C":"Dialectical Behavior Therapy (DBT)","D":"Humanistic Therapy"};
         const data = new FormData(e.target);

@@ -38,9 +38,9 @@ class SpeakerDashboard extends React.Component{
                 console.log("Help")
                 window.location = `/speakers/${localStorage.getItem("id")}`;
             }
-        const res1 = await fetch(`http://localhost:5000/mender/speakersdash/${this.speakerid}`);
+        const res1 = await fetch(`/mender/speakersdash/${this.speakerid}`);
         const info1 = await res1.json();
-        const res2 = await fetch(`http://localhost:5000/mender/alltalks/${this.speakerid}`);
+        const res2 = await fetch(`/mender/alltalks/${this.speakerid}`);
         const info2 = await res2.json();
         this.setState({
             Talks: info2.map((talk) => (
@@ -66,13 +66,6 @@ class SpeakerDashboard extends React.Component{
         </div>
         )
         });
-    }
-    logMeOut=()=>{
-        Auth.setspeaker('');
-        Auth.setID('');
-        localStorage.setItem("speaker", "");
-        localStorage.setItem("id", "");
-        window.location = "/";
     }
     
     render(){

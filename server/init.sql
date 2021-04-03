@@ -24,3 +24,5 @@ create table if not exists talks(talkID serial primary key, talktitle text not n
 create table if not exists gives(talkID serial references talks(talkID), speakerID serial references speakers(speakerID));
 
 create table if not exists attends(talkID serial references talks(talkID), userID serial references users(userID));
+
+create table if not exists posts(postID serial primary key, text varchar(2000), userID serial references users(userID));

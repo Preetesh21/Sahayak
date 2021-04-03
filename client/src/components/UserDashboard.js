@@ -31,9 +31,9 @@ class UserDashboard extends React.Component{
                 window.location = `/users/${localStorage.getItem("id")}`;
             }
             console.log("fref");
-            const in1 = await fetch(`http://localhost:5000/mender/getappo/${this.userid}`);
+            const in1 = await fetch(`/mender/getappo/${this.userid}`);
             const appo = await in1.json();
-            const in2 = await fetch(`http://localhost:5000/mender/gettalks/${this.userid}`);
+            const in2 = await fetch(`/mender/gettalks/${this.userid}`);
             const talks = await in2.json();
 
             this.setState({

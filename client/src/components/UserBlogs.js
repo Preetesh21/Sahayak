@@ -19,7 +19,7 @@ class UserBlogs extends React.Component{
                 object[key] = value;
             });
             console.log(JSON.stringify(object));
-            const resp = await fetch(`http://localhost:5000/mender/${this.userid}/postnewblog`,{
+            const resp = await fetch(`/mender/${this.userid}/postnewblog`,{
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(object)
@@ -34,7 +34,7 @@ class UserBlogs extends React.Component{
         document.getElementById("newBlogUser").innerHTML = `<h4>New Blog</h4><form onSubmit={this.submitNewUserBlog}>Title : <br/><input name="title" type="text" height="2px" width="50px"></input><br/>Body :<br/><input name="textbody" type="text" height="100px" width="50px"></input><br/>Tags : <br/><input name="tags" type="text" ></input><br/><button type="submit" class="btn btn-success">Submit</button></form>`;
     }
     fetchPrevUserBlogs = async (e) =>{
-        const resp = await fetch(`http://localhost:5000/mender/${this.userid}/fetchallblogs`);
+        const resp = await fetch(`/mender/${this.userid}/fetchallblogs`);
         const blogs = await resp.json();
         console.log(blogs);
 

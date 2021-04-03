@@ -17,7 +17,7 @@ class AllTestsPage extends React.Component{
         });
         const f = JSON.stringify(object);
         console.log(f);
-        const resp = await fetch(`http://localhost:5000/mender/${this.userid}/putobjresp`,{
+        const resp = await fetch(`/mender/${this.userid}/putobjresp`,{
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: f
