@@ -3,12 +3,19 @@ const pool = require("./db");
 const app = express();
 const cors = require("cors");
 var bcrypt = require('bcryptjs');
+const path=require('path');
 
 const PORT=process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
+
+if (process.env.NODE_ENV === "production") {
+    //server static content
+    //npm run build
+    app.use(express.static(path.join(__dirname, "client/build")));
+  }
 // Routes
 // New User Signup
 app.post('/mender/users',async (req,res)=>{
@@ -252,6 +259,11 @@ app.get('/mender/registeredtalks/:userid',async(req,res)=>{
     const fet = await pool.query("select talkid from menderschema.attends as t where t.userid = $1",[userid]);
     res.send(fet.rows);
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
+
 app.listen(PORT, () => {
     //console.log(`server has started on port ${PORT}`);
 });
