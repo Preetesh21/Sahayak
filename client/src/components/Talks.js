@@ -1,5 +1,6 @@
 import  React,{Fragment} from "react";
 import Footer from "./Footer";
+import Navber from './Navber';
 class Talks extends React.Component{
     constructor(props){
         super(props);
@@ -22,7 +23,9 @@ class Talks extends React.Component{
             if(regtalks[i].talkid === id){
                 console.log(regtalks[i].talkid);
                 flag=false;
+                document.getElementById(`id${regtalks[i].talkid}`).className = "btn btn-primary";
                 document.getElementById(`id${regtalks[i].talkid}`).innerHTML = "Already Registered";
+                
                 console.log(flag);
             }
         }
@@ -43,25 +46,41 @@ class Talks extends React.Component{
         const talks = await resp.json();
         this.setState({
             Talks: talks.map((talk) => (
-                <li class="list-group-item" key={talk.talkid}>
-                    <p>Title:{talk.talktitle}</p>
-                    <p>Description: {talk.talkdesc}</p>
-                    <p>Date : {talk.talkdate}    Time : {talk.talktime}</p>
-                    <p>Maximum Entries Allowed :{talk.maxentries}</p>
-                    <p>Booked Seats :{talk.bookedseats}</p>
-                    <p>Fee :{talk.fee}</p>
-                    <button onClick={(e)=>this.bookTalk(talk.talkid,e)} id={`id${talk.talkid}`}>Register</button>
-                </li>
+                    <Fragment>
+                    <tr key={talk.talkid}>
+                    
+                        <th>{talk.talktitle}</th>
+                        <th>{talk.talkdesc}</th>
+                        <th>{talk.talkdate}</th>
+                        <th>{talk.talktime}</th>
+                        <th>{talk.maxentries}</th>
+                        <th>{talk.bookedseats}</th>
+                        <th>{talk.fee}</th>
+                    <button className="btn btn-primary " onClick={(e)=>this.bookTalk(talk.talkid,e)} id={`id${talk.talkid}`}>Register</button>
+                    </tr>
+                    </Fragment>
                 ))
             });
     }
     render(){
         return(
             <Fragment>
+            <Navber />
             <div className="container" style={{minHeight:"75vh"}}>
-            <ul className="list-group m-2">
+            <h2 className="text-center">All the talks</h2>
+            <table class="table table-dark table-striped">
+          <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Maximum Seats</th>
+        <th>Seats booked</th>
+        <th>Fee</th>
+        <th>Register</th>
+    </tr>
                 {this.state.Talks}
-            </ul>
+                </table>
             </div>
             <Footer/>
             </Fragment>

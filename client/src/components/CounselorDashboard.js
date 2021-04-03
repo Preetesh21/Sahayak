@@ -15,6 +15,15 @@ class CounselorDashboard extends React.Component{
                 window.location = "/unauthorized";
             }
     }
+    componentDidMount(){
+        if(localStorage.getItem("counselor")!=='t')
+            {
+                console.log("Help")
+                window.location = "/unauthorized";
+            }
+            this.dispInfo();
+    }
+
     logMeOut=()=>{
         Auth.setcounselor('');
         Auth.setID('');

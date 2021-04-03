@@ -1,6 +1,7 @@
 import React,{Fragment} from "react";
 import Footer from "./Footer";
 import Auth from "./Auth";
+import Navber from './Navber';
 class SpeakerDashboard extends React.Component{
     constructor(props){
         super(props);
@@ -17,8 +18,15 @@ class SpeakerDashboard extends React.Component{
         
     }
     componentDidMount(){
+        if(localStorage.getItem("speaker")!=='t')
+            {
+                console.log("Help")
+                window.location = "/unauthorized";
+            }
+        else{
         this.dispInfo();
     }
+}
     dispInfo = async () => {
         if(localStorage.getItem("speaker")!=='t')
             {
@@ -36,34 +44,12 @@ class SpeakerDashboard extends React.Component{
         const info2 = await res2.json();
         this.setState({
             Talks: info2.map((talk) => (
-                <div className="card-deck">
-                <div className="col-sm-4" key={talk.talkid}>
-                
-                    <div className="card bg-light border-primary mb-2">
-                        <div className="card-body">
-                            <h5 className="card-title">{talk.talktitle}</h5>
-                            <div className="row d-flex justify-content-between card-strip">
-                            <p className="card-text">Description ::{talk.talkdesc}</p>
-                            
-                            </div>
-                            <div className="row d-flex justify-content-between card-strip">
-                            <p className="card-text">Time ::{talk.talktime}</p>
-                            <div className="right d-flex">
-                                <div className="fa fa-clock-o"></div>
-                            </div>
-                            </div>
-                            <div className="row d-flex justify-content-between card-strip">
-                            <p className="card-text">Date ::{talk.talkdate}</p>
-                            <div className="right d-flex">
-                                <div className="fa fa-calendar-o"></div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                
-                </div>
+                <tr key={talk.talkid}>
+                    <th>{talk.talktitle}</th>
+                    <th>{talk.talkdesc}</th>
+                    <th>{talk.talktime}</th>
+                    <th>{talk.talkdate}</th>
+                    </tr>
                 )),
             Info : ( 
         <div className="card bg-light border-danger mb-3">
@@ -88,15 +74,12 @@ class SpeakerDashboard extends React.Component{
         localStorage.setItem("id", "");
         window.location = "/";
     }
-    newTalk = () =>{
-        window.location = `/speakers/${this.speakerid}/pushnewtalk`;
-    }
+    
     render(){
         return(
             <Fragment>
+            <Navber />
             <div className="container"style={{minHeight:"75vh"}} >
-            <button className="btn btn-primary" onClick={this.newTalk}>New Talk</button>
-                    <button onClick={this.logMeOut} className="btn btn-danger m-3">Log me out</button>
                 <div className="row">
                 <div className="col-md-4" id="profile">
                 <h2 className="text-center">Speaker profile</h2>
@@ -104,7 +87,13 @@ class SpeakerDashboard extends React.Component{
                 </div>
                 <div className="col-md-8"  id="talks" >
                     <h3 className="text-center">All the Talks</h3>
-                    {this.state.Talks}
+                    <table className="table table-dark table-striped"><tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                            </tr>{this.state.Talks}
+                            </table>
                 </div>
                 </div>
                 </div>

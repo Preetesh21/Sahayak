@@ -39,6 +39,9 @@ class SpeakerLoginForm extends React.Component{
     };
     render(){return (
         <Fragment>
+        <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
+            <a className="navbar-brand" href={ `/`}>Home</a>
+        </nav>
         <div className="container">
                     <form  style={{height:"75vh",float:"right",width:"50vw"}} onSubmit={this.handleSubmit}>
                         <div className="form-group">

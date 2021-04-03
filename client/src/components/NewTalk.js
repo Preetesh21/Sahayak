@@ -1,5 +1,6 @@
 import React,{Fragment} from "react";
 import Footer from './Footer';
+import Navber from './Navber';
 class NewTalk extends React.Component{
     constructor(props){
         super(props);
@@ -102,6 +103,7 @@ class NewTalk extends React.Component{
     render(){
         return(
             <Fragment>
+            <Navber />
             <div className="container">
                 <form style={{minHeight:"75vh"}} onSubmit={this.pushIt}>
                     Talk Title:

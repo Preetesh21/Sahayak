@@ -1,5 +1,6 @@
 import React,{Fragment} from "react";
 import Footer from "./Footer";
+import Navber from './Navber';
 class AllTestsPage extends React.Component{
     constructor(props){
         super(props);
@@ -39,13 +40,14 @@ class AllTestsPage extends React.Component{
             document.getElementById("btnx").onclick = ()=>{window.location = `/users/${this.userid}/book-an-appointment`;};
         }
         else{
-            document.getElementById("optionalbook").innerHTML = "You will be fine. Your test results show that you are just a bit stressed. Listen to a soothing music, that helps!";
+            document.getElementById("optionalbook").innerHTML = "You seem to be fine. Your test results show that you are just a bit stressed. Listen to a soothing music, that helps!";
         }
     }
 
     render(){
         return(
             <Fragment>
+            <Navber />
                 <div style={{textAlign:"center",minHeight:"75vh"}} id="objtest">
                 <form onSubmit={this.submitObjectiveRes}>
                 

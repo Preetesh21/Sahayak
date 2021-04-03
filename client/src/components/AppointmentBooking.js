@@ -1,5 +1,6 @@
 import React,{Fragment} from "react";
-import jQuery ,{$} from "jquery";
+import Footer from './Footer';
+import Navber from './Navber';
 
 class AppointmentBooking extends React.Component{
     constructor(props){
@@ -23,10 +24,10 @@ class AppointmentBooking extends React.Component{
         this.setState({bs:slots});
         this.setState({
             BusySlots: slots.map((slot,index) => (
-                <li key={index} className="list-group-item">
-                    Date : {(slot.bookdate).toString().substr(0,10)}<br/>
-                    Time : {slot.booktime}
-                </li>
+                <tr key={index} >
+                    <th>{(slot.bookdate).toString().substr(0,10)}</th>
+                    <th>{slot.booktime}</th>
+                </tr>
                 ))
             });
             console.log(this.state.bs);
@@ -131,23 +132,34 @@ class AppointmentBooking extends React.Component{
     render(){
         return(
             <Fragment>
-                <div >
-                    <form  style={{height:"75vh",marginLeft:"50vw",marginBottom:"2vh",marginTop:"2vh"}} onSubmit={this.bookMe}>
-                        Date<br/>
-                        <input name="date" type="date"></input><br/>
-                        Time Slot <button type="button" className="btn btn-lg btn-danger" data-toggle="popover" title="Time Slots Info" data-content="Each time slot is 40 minutes long followed by 20 minutes break for the Psychologist. For example : 1:00 - 1:40 is the appointment slot and 1:40 - 2:00 is a break slot. The Counselors are available from 10:00 am to 5 pm.">?</button><br/>
-                        <input name="time" type="time"></input><br/>
-                        Link<br/>
-                        <input name="link" type="text"></input><br/>
+            <Navber />
+                <div className="container">
+                <h1>Form</h1>
+                    <form className="form-group" onSubmit={this.bookMe}>
+                        <b>Date</b><br/>
+                        <input className="form-control" name="date" type="date"></input><br/>
+                        <b>Time Slot</b> <br></br>
+                        <small>
+                        Each time slot is 40 minutes long followed by 20 minutes break for the Psychologist. 
+                        For example : 1:00 - 1:40 is the appointment slot and 1:40-2:00 is a break slot.
+                        The Counselors are available from 10 am to 5 pm.
+                        </small>
+
+                        <input className="form-control" name="time" type="time"></input><br/>
+                        <b>Link</b><br/>
+                        <input className="form-control" name="link" type="text"></input><br/>
                         <button type="submit" className="btn btn-info">book Slot</button>
                     </form>
-                    <div id="warndatetime">
+                    <h3><b>Busy slots</b></h3> 
+                    <table className="table table-dark table-striped">
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                        {this.state.BusySlots}
+                    </table>
                     </div>
-                </div>
-                <div id="busyslots"  style={{height:"75vh",marginLeft:"50vw",marginBottom:"2vh",marginTop:"2vh"}} >
-                    Busy slots
-                    <ul className="list-group">{this.state.BusySlots}</ul>
-                </div>
+                <Footer />
             </Fragment>
         );
     }

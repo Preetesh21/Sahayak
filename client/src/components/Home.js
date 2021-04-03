@@ -1,7 +1,19 @@
 import React, {Fragment} from "react";
 import Footer from "./Footer";
+import Auth from './Auth';
 import "./style.css";
 class Home extends React.Component{
+    constructor(props){
+        super(props);
+        Auth.setuser('');
+        Auth.setspeaker('');
+        Auth.setcounselor('');
+        Auth.setID('');
+        localStorage.setItem("user", "");
+        localStorage.setItem("speaker", "");
+        localStorage.setItem("counselor", "");
+        localStorage.setItem("id", "");
+    }
     userSignUp(){
         window.location = "/user-signup";
     }

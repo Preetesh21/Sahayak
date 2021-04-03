@@ -1,9 +1,11 @@
-import React from 'react';
+import {React, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import './unauthorized.scss';
+import Footer from './Footer';
 
 const Unauthorized = () => {
   return (
+    <Fragment>
     <div className='container' id="container">
       <div class="gandalf">
         <div class="fireball"></div>
@@ -24,6 +26,8 @@ const Unauthorized = () => {
       </div>
       <p><Link to='/'>Back to Home</Link></p>
     </div>
+    <Footer />
+    </Fragment>
   )
 }
 

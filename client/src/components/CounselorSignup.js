@@ -32,6 +32,9 @@ class CounselorSignUpForm extends React.Component {
     
     render(){return (
         <Fragment>
+        <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
+            <a className="navbar-brand" href={ `/`}>Home</a>
+        </nav>
         <div className="container">
                     <form style={{float:"right",width:"50vw"}} onSubmit={this.handleSubmit}>
                         <div className="form-group">
@@ -102,7 +105,7 @@ class CounselorSignUpForm extends React.Component {
                             <input type="text" className="form-control" name="portfoliocs" placeholder="www.example.com"/>
                         </div>
                         <div>
-                            <label>Choose your first priority among all:</label><br/>
+                            <label><b>Choose your first priority among all:</b></label><br/>
                             <input type="radio"  name="pr1cs" value="A"/>
                             <label for="A">Cognitive-Behavioral Therapy (CBT)</label><br/>
                             <input type="radio"  name="pr1cs" value="B"/>
@@ -113,7 +116,7 @@ class CounselorSignUpForm extends React.Component {
                             <label for="D">Humanistic Therapy</label><br/>
                         </div>
                         <div>
-                            <label>Choose your Second priority among all:</label><br/>
+                            <label><b>Choose your Second priority among all:</b></label><br/>
                             <input type="radio"  name="pr2cs" value="A"/>
                             <label for="A">Cognitive-Behavioral Therapy (CBT)</label><br/>
                             <input type="radio"  name="pr2cs" value="B"/>
@@ -124,7 +127,7 @@ class CounselorSignUpForm extends React.Component {
                             <label for="D">Humanistic Therapy</label><br/>
                         </div>
                         <div>
-                            <label>Choose your third priority among all:</label><br/>
+                            <label><b>Choose your third priority among all:</b></label><br/>
                             <input type="radio"  name="pr3cs" value="A"/>
                             <label for="A">Cognitive-Behavioral Therapy (CBT)</label><br/>
                             <input type="radio"  name="pr3cs" value="B"/>
@@ -135,7 +138,7 @@ class CounselorSignUpForm extends React.Component {
                             <label for="D">Humanistic Therapy</label><br/>
                         </div>
                         <div>
-                            <label>Choose your forth priority among all:</label><br/>
+                            <label><b>Choose your forth priority among all:</b></label><br/>
                             <input type="radio"  name="pr4cs" value="A"/>
                             <label for="A">Cognitive-Behavioral Therapy (CBT)</label><br/>
                             <input type="radio"  name="pr4cs" value="B"/>
