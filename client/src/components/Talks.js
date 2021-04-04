@@ -13,7 +13,7 @@ class Talks extends React.Component{
     }
     bookTalk = async (id,e) =>{
         e.preventDefault();
-        console.log("dfffhbf");
+        //console.log("dfffhbf");
         const reg = await fetch(`/mender/registeredtalks/${this.userid}`);
         const regtalks = await reg.json();
         const resp1 = await fetch('/mender/alltalks');
@@ -21,17 +21,17 @@ class Talks extends React.Component{
         var flag=true;
         for(var i=0;i<regtalks.length;i++){
             if(regtalks[i].talkid === id){
-                console.log(regtalks[i].talkid);
+                //console.log(regtalks[i].talkid);
                 flag=false;
                 document.getElementById(`id${regtalks[i].talkid}`).className = "btn btn-primary";
                 document.getElementById(`id${regtalks[i].talkid}`).innerHTML = "Already Registered";
                 
-                console.log(flag);
+                //console.log(flag);
             }
         }
-        for(var i =0;i<talks1.length;i++){
-            if(talks1[i].maxentries === talks1[i].bookedseats){
-                document.getElementById(`id${regtalks[i].talkid}`).innerHTML = "Seats Full";
+        for(var ii =0;ii<talks1.length;ii++){
+            if(talks1[ii].maxentries === talks1[ii].bookedseats){
+                document.getElementById(`id${regtalks[ii].talkid}`).innerHTML = "Seats Full";
                 flag=false;
             }
         }

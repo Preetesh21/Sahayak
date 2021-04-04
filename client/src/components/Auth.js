@@ -19,23 +19,23 @@ var Auth = (function() {
     };
 
     var setID = function(ids) {
-        console.log('hello',ids)
+        //console.log('hello',ids)
         id = ids;     
       // Also set this in cookie/localStorage
     };
   
     var setuser = function(users) {
-        console.log('hello',users)
+        //console.log('hello',users)
         user = users;     
         // Also set this in cookie/localStorage
       };
     var setspeaker = function(speaker) {
-        console.log('hello',speaker)
+        //console.log('hello',speaker)
         speaker = speaker;     
         // Also set this in cookie/localStorage
       };
     var setcounselor = function(counselor) {
-        console.log('hello',counselor)
+        //console.log('hello',counselor)
         counselor = counselor;     
         // Also set this in cookie/localStorage
       };

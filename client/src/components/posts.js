@@ -11,7 +11,7 @@ function App() {
   let [text, setText] = useState('');
   let [score, setScore] = useState(0);
   let [modelIsReady, setModelIsReady] = useState(false); 
-  let [posts,setPosts]=useState('');
+//  let [posts,setPosts]=useState('');
   let userid=localStorage.getItem('id');
   const handleChange = (e) => {
     setText(e.target.value);
@@ -58,7 +58,7 @@ function App() {
       <br />
       <h3>Sentiment Score: {score.toFixed(5)}</h3>
       <button className="btn btn-warning" onClick={senddata}>Post</button><br></br>
-      <h5 id="hell"></h5>
+      <h5 id="hell">.</h5>
         <br></br>
         
         <a href ={`/users/${userid}/allposts`}>CLICK TO CHECK ALL YOUR POSTS</a>     

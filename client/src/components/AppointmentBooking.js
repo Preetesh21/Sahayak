@@ -64,7 +64,7 @@ class AppointmentBooking extends React.Component{
                         var hour = today.getHours();
                         var h1 = data.get("time").substr(0,2);
                         var m1 = data.get("time").substr(3,5);
-                        if(parseInt(m1) != 0 || parseInt(h1) < 10 || parseInt(h1) > 17){
+                        if(parseInt(m1) !== 0 || parseInt(h1) < 10 || parseInt(h1) > 17){
                             flag=0;
                             console.log("invalid");
                         }
@@ -89,7 +89,7 @@ class AppointmentBooking extends React.Component{
             var hour = today.getHours();
             var h1 = data.get("time").substr(0,2);
             var m1 = data.get("time").substr(3,5);
-            if(parseInt(m1) != 0 || parseInt(h1) < 10 || parseInt(h1) > 17){
+            if(parseInt(m1) !== 0 || parseInt(h1) < 10 || parseInt(h1) > 17){
                 flag=0;
                 console.log("invalid");
             }

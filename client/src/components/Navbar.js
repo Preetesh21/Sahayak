@@ -16,7 +16,6 @@ import AllTestsPage from "./AllTestsPage";
 import Talks from "./Talks";
 import Unauthorized from "./Unauthorized";
 import NewTalk from "./NewTalk";
-import Sentiment from './sentiment';
 import Posts from './posts';
 import Allposts from './allposts';
 
