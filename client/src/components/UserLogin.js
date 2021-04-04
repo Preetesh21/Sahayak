@@ -13,7 +13,7 @@ class userLoginForm extends React.Component{
         const email = data.get('emailul'); 
         const passwd = data.get('passwdul');
         console.log(email,passwd);
-        const resp = await fetch(`/mender/users/${email}&${passwd}`);
+        const resp = await fetch(`http://localhost:5000/mender/users/${email}&${passwd}`);
         const jsonPasswd = await resp.json();
         // if(jsonPasswd['password'] === passwd){
         //     console.log("password verified");
