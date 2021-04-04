@@ -53,8 +53,8 @@ function App() {
       <Navber />
 
 <div className="row">
-<div className="col-md-7">
-  <div className="App container" style={{maxWidth:"50vw",maxHeight:"20vh"}}>
+<div className="col-lg-8">
+  <div className="App container">
       <h1>Sentiment Analyzer</h1>
       <textarea id="input" onChange={handleChange} placeholder="hello I like you!" disabled={!modelIsReady}></textarea>
       <br />
@@ -69,7 +69,8 @@ function App() {
         <a href ={`/users/${userid}/allposts`}>CLICK TO CHECK ALL YOUR POSTS</a>     
     </div>   
   </div>
-  <div className="col-md-4 m-3">
+  <div className="col-lg-4">
+  <div className="App container" style={{alignItems:"center"}}>
   <ChatBot
   steps={[
     {
@@ -128,6 +129,7 @@ function App() {
     }
   ]}
 />
+</div>
   </div>
 </div>
 <Footer />

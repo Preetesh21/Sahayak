@@ -23,7 +23,7 @@ app.post('/mender/users',async (req,res)=>{
     bcrypt.genSalt(10, async function(err, salt) {
         bcrypt.hash(data["passwdus"], salt,async  function(err, hash) {
             // Store hash in your password DB.
-            console.log(hash)
+            //console.log(hash)
             const putUser = await pool.query("insert into menderschema.users(email, username,password,age, gender, creditCardNumber, phoneNumber, whatsappNumber, sessionsTaken,talksAttended) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",[data["emailus"],data["usernameus"],hash,data["ageus"],data["genderus"],data["creditus"],data["phoneus"],data["phonewtspus"],0,0]);
             res.json(putUser.rows[0]);
         });
@@ -34,12 +34,12 @@ app.post('/mender/users',async (req,res)=>{
 app.get('/mender/users/:email&:password',async(req,res)=>{
     const { email,password } = req.params;
     const getPasswd = await pool.query("select password,userID from menderschema.users where email=$1",[email]);
-    console.log(getPasswd.rows[0]);
+    //console.log(getPasswd.rows[0]);
     bcrypt.compare(password, getPasswd.rows[0].password, function(err, res2) {
         //console.log(res2)
         if(res2===true)
         {
-            console.log(res2)
+            //console.log(res2)
             res.send(getPasswd.rows[0]);
         }
         else{
